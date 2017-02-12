@@ -98,8 +98,34 @@ function redirect($path) {
 	exit;
 }
 
+function findUserByEmail($email) {
+	global $db;
 
+	try {
+		$query = "SELECT * FROM users WHERE email = :email";
+		$stmt = $db->prepare($query);
+		$stmt->bindParam(':email', $email);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	} catch (\Exception $e) {
+		throw $e;
+	}
+}
 
+function createUser($email, $password) {
+	global $db;
+
+	try {
+		$query = "INSERT INTO users (email, password, role_id) VALUES (:email, :password, 2)";
+		$stmt = $db->prepare($query);
+		$stmt->bindValue(':email', $email);
+		$stmt->bindValue(':password', $password);
+		$stmt->execute();
+		return findUserByEmail($email);
+	} catch (\Exception $e) {
+		throw $e;
+	}
+}
 
 
 
