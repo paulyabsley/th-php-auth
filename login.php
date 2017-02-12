@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/inc/bootstrap.php';
 require_once __DIR__ . '/inc/head.php';
 require_once __DIR__ . '/inc/nav.php';
 ?>
@@ -6,7 +7,8 @@ require_once __DIR__ . '/inc/nav.php';
 	<div class="well col-sm-6 col-sm-offset-3">
 		<form class="form-signin" method="post" action="procedures/doLogin.php">
 			<h2 class="form-signin-heading">Please sign in</h2>
-			<?php // print display_errors(); ?>
+			<?php print displayErrors(); ?>
+			<?php print displaySuccess(); ?>
 			<label for="inputEmail" class="sr-only">Email address</label>
 			<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
 			<br>

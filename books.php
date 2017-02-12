@@ -5,6 +5,7 @@ require_once __DIR__ . '/inc/nav.php';
 ?>
 <div class="container">
 	<div class="well">
+		<?php print displaySuccess(); ?>
 		<h2>Book List</h2>
 		<?php
 		foreach (getAllBooks() as $book) {
